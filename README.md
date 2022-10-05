@@ -1,5 +1,5 @@
 # Командный проект по курсу «Профессиональная работа с Python»
-
+![Иллюстрация к проекту](https://github.com/romariotrain/adpy-team8-diplom/raw/main/image/logo.png)
 ## Tinder на минималках
 
 ### Цель проекта
