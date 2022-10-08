@@ -1,5 +1,3 @@
-from msilib.schema import tables
-from os import link
 import psycopg2
 import yaml
 from db_postgresql import DataBase
@@ -29,31 +27,36 @@ if __name__ == '__main__':
             print(db.create_table(name_table)) 
 
 
-            # Добавить новую запись
-            vk_id = 1
-            first_name = 'Ira'
-            last_name = 'Smirnova'
-            sex = 'girl'
-            age = 50
-            city = 'Москва'
-            print(table.add_person(vk_id, first_name, last_name, sex, age, city))        
+            # Добавить данные юзера в БД
+            user_info = {
+                'vk_id': 1607,
+                'first_name': 'Ira',
+                'last_name': 'Smirnova',
+                'sex': 'girl',
+                'age': 20,
+                'city': 'Москва'
+            }
+            print(table.add_person(user_info))        
 
-            # Добавить ссылку на фотографию
-            vk_id = 1
-            link_list = ['photo-86093450_456239309', 'photo-86093450_456239390', 'photo-86093450_456239111']
-            for link in link_list:
-                print(table.add_photo(vk_id, link))     
 
             # Добавить страницу в список избранных (создать пару)
-            elector_id = 1
-            favorite_id = 123
-            print(table.add_favorite(elector_id, favorite_id))  
+            elector_id = 1607
+            favorite_info = {
+                'vk_id': 829,
+                'first_name': 'Gena',
+                'last_name': 'Smirnoff',
+                'sex': 'men',
+                'age': 25,
+                'city': 'Tomsk'
+                }
+            photo_list = ['photo-86093450_456239309', 
+                'photo-86093450_456239390', 
+                'photo-86093450_456239111'
+                ]
+            print(table.add_favorite(elector_id, favorite_info, photo_list))  
 
-            # Выводит список избранных людей
+            # Вывести список избранных
             vk_id = 1
             print(table.outputs_list(vk_id))  
 
-
     conn.close()
-
-
